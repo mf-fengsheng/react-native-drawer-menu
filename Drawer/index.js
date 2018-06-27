@@ -182,8 +182,8 @@ export default class Drawer extends Component {
     if (
       this.props.disabled ||
       (this.props.responderNegotiate && this.props.responderNegotiate(evt, gestureState) === false) || 
-      (gestureState.moveX < 380 && gestureState.dx < 0) ||
-      (gestureState.moveX > 20 && gestureState.dx > 0)
+      (gestureState.moveX < 300 && gestureState.dx < 0) ||
+      (gestureState.moveX > 100 && gestureState.dx > 0)
     ) return false;
     if (this._touchPositionCheck(gestureState)) {
       this.props.showMask && !this.state.showMask && this.setState({ showMask: true });
