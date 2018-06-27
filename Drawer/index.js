@@ -48,7 +48,7 @@ export default class Drawer extends Component {
     customStyles: {},
     startCapture: false,
     moveCapture: false,
-    disableGesture: true
+    disableGesture: false
   }
   static propTypes = {
     disabled: PropTypes.bool,
@@ -181,7 +181,9 @@ export default class Drawer extends Component {
     // custom pan responder condition function
     if (
       this.props.disabled ||
-      (this.props.responderNegotiate && this.props.responderNegotiate(evt, gestureState) === false)
+      (this.props.responderNegotiate && this.props.responderNegotiate(evt, gestureState) === false) || 
+      (gestureState.moveX < 380 && gestureState.dx < 0) ||
+      (gestureState.moveX > 20 && gestureState.dx > 0)
     ) return false;
     if (this._touchPositionCheck(gestureState)) {
       this.props.showMask && !this.state.showMask && this.setState({ showMask: true });
