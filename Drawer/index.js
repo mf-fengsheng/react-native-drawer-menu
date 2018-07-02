@@ -181,7 +181,7 @@ export default class Drawer extends Component {
     // custom pan responder condition function
     if (
       this.props.disabled ||
-      (this.props.responderNegotiate && this.props.responderNegotiate(evt, gestureState) === false) || 
+      (this.props.responderNegotiate && this.props.responderNegotiate(evt, gestureState) === false) ||
       (gestureState.moveX < 300 && gestureState.dx < 0) ||
       (gestureState.moveX > 100 && gestureState.dx > 0)
     ) return false;
@@ -215,10 +215,18 @@ export default class Drawer extends Component {
     if (isOpen && gestureState.dx === 0) return this._handleMainBoardPress();
     if (currentWidth === this.MAX_DX) return this._drawerDidOpen();
     if (currentWidth === 0) return this._drawerDidClose();
-    if (currentWidth > this.MAX_DX / 2) {
-      this.openDrawer();
-    } else {
-      this.closeDrawer();
+    if (!isOpen) {
+      if (currentWidth > this.MAX_DX / 5) {
+        this.openDrawer();
+      } else {
+        this.closeDrawer();
+      }
+    }else{
+      if (currentWidth > this.MAX_DX * 0.8) {
+        this.openDrawer();
+      } else {
+        this.closeDrawer();
+      }
     }
   }
   _getCurrentDrawerWidth() {
