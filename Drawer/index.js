@@ -221,8 +221,8 @@ export default class Drawer extends Component {
       } else {
         this.closeDrawer();
       }
-    }else{
-      if (currentWidth > this.MAX_DX * 0.8) {
+    } else {
+      if (currentWidth > this.MAX_DX / 2) {
         this.openDrawer();
       } else {
         this.closeDrawer();
