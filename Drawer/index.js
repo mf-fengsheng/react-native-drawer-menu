@@ -40,7 +40,7 @@ export default class Drawer extends Component {
     leftDisabled: false,
     rightDisabled: false,
     drawerWidth: 300,
-    duration: 160,
+    duration: 50,
     drawerPosition: positions.Left,
     type: types.Default,
     showMask: true,
@@ -222,7 +222,7 @@ export default class Drawer extends Component {
         this.closeDrawer();
       }
     } else {
-      if (currentWidth > this.MAX_DX / 2) {
+      if (currentWidth > this.MAX_DX * 0.8) {
         this.openDrawer();
       } else {
         this.closeDrawer();
